@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Results | Projekt ze strojového učení</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="styles/default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<h1> Projekt </h1>
+	<h2> PV056 </h2>
+</div>
+<div id="menu">
+	<ul>
+		<li><a href="#">CS:</a></li>
+		<li><a href="./index_cs.html">Úvod</a></li>
+		<li><a href="./interim_cs.html">Interim report</a></li>
+		<li><a href="./predzpracovani_cs.html">Předzpracování</a></li>
+		<li><a href="./klasifikace_cs.html">Klasifikace</a></li>
+		<li><a href="./vysledky_cs.html">Výsledky</a></li>
+	</ul>
+	<br>
+	<br>
+	<hr style="clear:both; display:none">
+	<ul>
+		<li><a href="#">EN:</a></li>
+		<li><a href="./index_en.html">Introduction</a></li>
+		<li><a href="./interim_en.html">Interim report</a></li>
+		<li><a href="./predzpracovani_en.html">Preprocessing</a></li>
+		<li><a href="./klasifikace_en.html">Classification</a></li>
+		<li><a href="./vysledky_en.html">Results</a></li>
+	</ul>
+</div>
+<div id="content">
+	<div id="columnA"> 
+		<h1>Results</h1>		
+		<p>The best two classification algorithms achieved the accuracy of 99.5 % on the testing dataset.</p>
+
+<h2>Evaluation of the data</h2>
+
+<p>To process the data we decited to use the Naive Bayes algorithm for two reasons. First, it is one of the two that gave the best accuracy. Second, it provides not only the classification but also the estimate of probability of the classification being correct. By looking at the histogram of the probabilities we decided to use a treshold of 95 % and drop any frame in which any of the numerals is classified bellow this treshold. In case two or more frames in a row contained the same numeral, we used only the first one and dropped all the subsequent repetitions. The data were exported in the CSV format and plotted using the Microsoft Excel 2007 spreadsheet software.</p>
+
+<h2>Conclusion</h2>
+
+<p>We have created a set of scripts in the Python programing language using the PIL library [3], that can be used to analyze recordings similar to the one of a digital display that we used.<br/>
+If used with different videos, the image processing process may have to be changed, most importantly the treshold values. The classification steps may stay unchanged.</p>
+
+<p>When the values obtained by classifying the whole video are plotted, the resulting chart looks like other measurements described in literature [1].</p>
+
+<h3>Our chart</h3>
+
+<p><img src="images/protokol.png" alt="Obrázek po segmentaci"/></p>
+
+<h3>Chart obtained from literature</h3>
+
+<p><img src="images/skripta.png" alt="Obrázek po segmentaci"/></p>
+
+<h2>Thanks</h2>
+
+<p>We want to thank to Pavel Karas, a doctoral student at FI, who gave us advice about image processing methods in the early stage of this project.</p>
+
+<h2>Literature</h2>
+
+<ul>
+<li><p>[1] SOPOUŠEK Jiří a Jiří Křivohlávek, Titulní strana předmětu C4680 Fyzikální chemie - laboratorní cvičení (interaktivní osnova), 2011</p></li>
+<li><p>[2] SOILLE, Pierre. Morphological image analysis: principles and applications. 2nd ed., corr. 2nd print. Berlin: Springer, c2004, xvi, 391 s. ISBN 3540429883.</p></li>
+<li><p>[3] Python Imaging Library Handbook. Dostupné online: <a href="http://effbot.org/imagingbook/pil-index.htm">http://effbot.org/imagingbook/pil-index.htm</a></p></li>
+</ul>
+
+	</div><div id="columnB">
+		<h2> <b> Novinky: </b> </h2>
+		<p><strong>[20/05/2013]</strong> <br /> Spuštìny webové stránky </p>
+		<p><strong>[26/05/2013]</strong> <br /> Interim report </p>
+		<br />
+		<h2> <b> Související odkazy: </b> </h2>
+		<a href="http://www.cs.waikato.ac.nz/ml/weka/"> Weka </a> <br />
+		<a href="http://www.fi.muni.cz/usr/popelinsky/lectures/kdd/"> Stránky předmětu </a> <br />
+	</div>
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<div id="footer">
+	<p>Copyright &copy; 2013 Jiří Daněk. Designed by <a href="http://www.freecsstemplates.org" class="link1">Free CSS Templates</a></p>
+</div>
+</body>
+</html>
+
+
+    
+    
+</body>
+</html> 

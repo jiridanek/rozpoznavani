@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Image preprocessing | Projekt ze strojového učení</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="styles/default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<h1> Projekt </h1>
+	<h2> PV056 </h2>
+</div>
+<div id="menu">
+	<ul>
+		<li><a href="#">CS:</a></li>
+		<li><a href="./index_cs.html">Úvod</a></li>
+		<li><a href="./interim_cs.html">Interim report</a></li>
+		<li><a href="./predzpracovani_cs.html">Předzpracování</a></li>
+		<li><a href="./klasifikace_cs.html">Klasifikace</a></li>
+		<li><a href="./vysledky_cs.html">Výsledky</a></li>
+	</ul>
+	<br>
+	<br>
+	<hr style="clear:both; display:none">
+	<ul>
+		<li><a href="#">EN:</a></li>
+		<li><a href="./index_en.html">Introduction</a></li>
+		<li><a href="./interim_en.html">Interim report</a></li>
+		<li><a href="./predzpracovani_en.html">Preprocessing</a></li>
+		<li><a href="./klasifikace_en.html">Classification</a></li>
+		<li><a href="./vysledky_en.html">Results</a></li>
+	</ul>
+</div>
+<div id="content">
+	<div id="columnA"> 
+		<h1>Image preprocessing</h1>		
+		<h2>1. Tresholding</h2>
+
+<p>The tresholding is based on the fact that the pixels corresponding to the numerals have a distinctive color that differentiates them from the background. Therefore we are using a simple predetermined treshold in the color space. We choose the following treshold values (in HSV color space):</p>
+
+<pre><code>H ∈ (150, 185)
+S ∈ (0, 50)
+V ∈ (0, 65)
+</code></pre>
+
+<p>Pixels inside the intervals are considered to be foreground, other pixels are background. In this way we obtain a binary image where the black pixels form the numerals and the white pixels are the background.</p>
+
+<p>The HSV color space better reflect the human conception of color similarity than the more common RGB color space. The conversion between RGB and HSV is very simple. We visually evaluated the tresholding quality. It turned out that the selected treshold works well.</p>
+
+<h2>2. Segmentation</h2>
+
+<p>The pixels that form individual numerals are adjectant to each other, while between the numerals there are spaces. Therefore, to extract individual numerals, the thresholded image can be segmented according to connected components. To eliminate the effects of noise we ignored segments smaller than 6x6 pixels, should any such small areas appear. Each segment obtained this way is assumed to contain a single numeral.</p>
+
+<p><img src="images/4.png" alt="Obrázek po segmentaci"/></p>
+
+<h2>3. Feature construction</h2>
+
+<p>We used primarily two features described in the Interim report:</p>
+
+<ul>
+<li>  left, right, top and bottom profile of a segment (this attribute suitable to use for digit recognition according to literature [2])</li>
+<li>  vector of all pixel values in a segment.</li>
+</ul>
+
+<p>To make these features comparable, we first reslaced every segment to dimensions 20x40 and only then computed them.</p>
+
+<p>Besides those, we later added these additional two features:</p>
+
+<ul>
+<li>  the ratio of the width and height of a segment, which allows the classification algorithm to better distinguish the numeral 1 from numeral 8.</li>
+<li>  the percentual fraction of black pixels in the segment, it aims to help distinguish numerals 0 and 8.</li>
+</ul>
+
+	</div><div id="columnB">
+		<h2> <b> Novinky: </b> </h2>
+		<p><strong>[20/05/2013]</strong> <br /> Spuštìny webové stránky </p>
+		<p><strong>[26/05/2013]</strong> <br /> Interim report </p>
+		<br />
+		<h2> <b> Související odkazy: </b> </h2>
+		<a href="http://www.cs.waikato.ac.nz/ml/weka/"> Weka </a> <br />
+		<a href="http://www.fi.muni.cz/usr/popelinsky/lectures/kdd/"> Stránky předmětu </a> <br />
+	</div>
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<div id="footer">
+	<p>Copyright &copy; 2013 Jiří Daněk. Designed by <a href="http://www.freecsstemplates.org" class="link1">Free CSS Templates</a></p>
+</div>
+</body>
+</html>
+
+
+    
+    
+</body>
+</html> 

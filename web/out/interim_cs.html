@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Interim report | Projekt ze strojového učení</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="styles/default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<h1> Projekt </h1>
+	<h2> PV056 </h2>
+</div>
+<div id="menu">
+	<ul>
+		<li><a href="#">CS:</a></li>
+		<li><a href="./index_cs.html">Úvod</a></li>
+		<li><a href="./interim_cs.html">Interim report</a></li>
+		<li><a href="./predzpracovani_cs.html">Předzpracování</a></li>
+		<li><a href="./klasifikace_cs.html">Klasifikace</a></li>
+		<li><a href="./vysledky_cs.html">Výsledky</a></li>
+	</ul>
+	<br>
+	<br>
+	<hr style="clear:both; display:none">
+	<ul>
+		<li><a href="#">EN:</a></li>
+		<li><a href="./index_en.html">Introduction</a></li>
+		<li><a href="./interim_en.html">Interim report</a></li>
+		<li><a href="./predzpracovani_en.html">Preprocessing</a></li>
+		<li><a href="./klasifikace_en.html">Classification</a></li>
+		<li><a href="./vysledky_en.html">Results</a></li>
+	</ul>
+</div>
+<div id="content">
+	<div id="columnA"> 
+		<h1>Interim report</h1>		
+		<p>Tento report vymezuje téma projektu z hlediska zpracovávaných dat a požadovaných výsledků zpracování, popisuje state-of-the-art v řešené oblasti a podává přehled konkrétních metod předzpracování dat, které budeme při řešení projektu používat.</p>
+
+<h2>1. Zadání projektu</h2>
+
+<p>Cílem projektu &ldquo;Rozpoznávání čísel ve videozáznamu&rdquo; je metodami strojového učení zpracovat dva konkrétní dříve pořízené videozáznamy digitálního displeje měřícího přístroje, aby se umožnilo další počítačové zpracování přístojem naměřených hodnot, zejména grafické znázornění průběhu měřené hodnoty (zobrazené na displeji) v čase.</p>
+
+<h2>2. Data</h2>
+
+<p>Videozáznamy byly pořízeny ve formátu 3GP (video 352x288 H.263, zvuk 3GP Mono 8 kHz), snímková frekvence 15 snímků za sekundu. Záznamy pořídil Jiří Daněk mobilním telefonem HTC Dream. Video je snímáno &ldquo;z ruky&rdquo;, bez použití stativu nebo jiných stabilizačních prostředků. Celkem bylo pořízeno asi 15 minut videa.</p>
+
+<h2>3. State-of-the-art</h2>
+
+<p>Při klasifikaci nestrukturovaných dat, například textu a obrázků, metodami strojového učení se daji rozlišit následujicí dva přístupy k problematice předzpracování dat. Tou první je manualní extrakce atributů [feature konstruction] s využitím zavedených technik, jako je u textů bag-of-words a u obrázků například SIFT features. Druhý přístup usiluje o co nejvíce automatické získání atributů s pomocí pomocí technik učení bez učitele [unsupervised learning].</p>
+
+<p>V tomto projektu budeme používat pouze metody manualní extrakce.  Postupy s využitím učení bez učitele k extrakci atributů jsou v současnosti předmětem intenzivního vědeckého výzkumu, pro úplnost zde tedy popisujeme i tyto postupy a uvádíme k nim i několik příkladů jejich použítí z literatury.</p>
+
+<h3>3.1. Manualní extrakce atributů</h3>
+
+<p>“The vast majority of all the creative work in the field of Artificial Intelligence was done not by machines, but by people”</p>
+
+<p>Předzpracování a konstrukce atributů se provádí manualně s využítím technik z oblasti zpracování obrazu. Úspěšnost řešení úlohy tímto způsobem závisí zejména na dobrém předzpracování dat. Protože vytvoření atributů pro klasifikaci je úkolem člověka, v angličtině se takové atributy uznačují jako [hand-crafted features]. </p>
+
+<p>Ačkoli nektere pokročilé operace mohou takové hrube rozdeleni porusovat, úlohy extrakce atributů z obrazu je možno rozdelit na nasledujici zakladni operace.</p>
+
+<p>předzpracování (prahování, filtrování)<br/>
+(segmentace)<br/>
+konstrukce atributů</p>
+
+<p>Takové rozdělení umožňuje experimentovat s různou kombinací metod v každé jednotlivé fázi.</p>
+
+<h4>3.1.1. Předzpracování</h4>
+
+<p>Možnými operacemi jsou prahováni, rozmazání, nebo operace z do matematicke morfologie. V případě videa zde můžeme uvést digitální stabilizaci obrazu.</p>
+
+<h4>3.1.2. Segmentace</h4>
+
+<p>Úkolem segmentace je nalezení relevantních částí obrazu pro extrakci atributů pro klasifikaci.</p>
+
+<h4>3.1.3. Tvorba atributů</h4>
+
+<p>Je možné využít některé zavedené robusní techniky tvorby atributů, například atributy SIFT/HOG nebo SURF. (V aplikacích kde není možné použít SIFT z důvodů platných softwarových patentů na tuto metodu se dá jako příbuzná alternativa použít metoda HOG). Je také možné použít některé méně sofistikované techniky, jako je bitový vektor hodnot všech pixelů obrázku.</p>
+
+<h4>3.1.4. Klasifikace</h4>
+
+<p>Cílem je klasifikovat segmenty na základě atributů určených v předchozím kroku.</p>
+
+<h3>3.2. Unsupervised learning</h3>
+
+<p>S poukazem na to, že manualní návrh vhodných atributů je časově náročný a při změné parametrů vstupu je nutné provádět jej opakovaně, při použítí této techniky atributy nekonstruujeme ručně, ale využíváme metod učení bez učitele [unsupervised learning] aplikovaných přímo na surová data. Tento přístup byl v minulosti neprakticky výpočetně náročný, nyní ale bývá využíván stále častěji. Specifickou variantou tohoto postupu je takzvaný Deep Learning.</p>
+
+<p>Použití učení bez učitele blíže popisuje článek [10], který ukazuje, jak tímto způsobem natrénovat atributy pro rozpoznávání ručně psaných číslic, například PSČ na pohlednicích nebo obecně ve formulářích.</p>
+
+<h4>3.2.1. Deep Learning</h4>
+
+<p>Velice zajímavým prohloubením myšlenky učení se atributů je Deep Learning. Učení bez učitele aplikujeme vícekrát, vždý nad výstupem předchozí metody učíme metodu následující. Z tohoto hlubokého vrstvení pochází název celého přístupu. Obvyklé je využití neuronových sítí. Celá konstrukce potom reflektuje soudobé představy o struktuře lidského mozku jako o hierarchii klasifikátorů. Proces Deep learningu je, poté, co si stanovíme algoritmy a postup tvoření hierarchie, téměř nebo zcela automatický.</p>
+
+<p>Finální klasifikátor se nachází na vrcholu celé hierarchie a jako atributy může využívat buď výstupy přímo pod ním ležící vrstvy, nebo i některých hlubšich vrstev.</p>
+
+<h5>Building High-level Features Using Large Scale Unsupervised Learning</h5>
+
+<p>“After a training period one neuron in the network had learned to respond strongly to cats.”</p>
+
+<p>Ve studii [9] se autoři pokusili technikou Deep learning vytvořit atributy, které by jim umožnili klasifikovat fotografie přirozených scén z hlediska objektů, které se na nich vyskytují. Učení atributů probíhalo na sadě deseti milionů snímků získaných z videa nahraného na server YouTube. Výsledný systém dosáhl na testovací sadě téměř dvojnásobné úspěšnosti než předchozí nejlepší klasifikační algoritmus. Jedna zajímavost, která zaujala i denní tisk je, že jeden z takto vytvořených atributů přímo koreloval s přítomností nebo nepřítomností kočičí hlavy na vstupním obrázku.</p>
+
+<p>Pro provedení tohoto experimentu bylo zapotřebí použít 16000 počítačů po dobu tří dnů.</p>
+
+<h3>3.3. Dříve dosažené výsledky</h3>
+
+<p>Problém rozpoznávání znaků (OCR) je známý velmi dlouho a jde ho řešit s vysokou úspěšností. Problém nalezení textu v obrázku se v literatuře označuje jako “text detection” a vývoj v této oblasti probíhá i dnes. Důkazem toho je například ICDAR competition, pravidelně  opakovaná soutěž algoritmů pro detekci textu.</p>
+
+<p>Náš problém detekce číslic na displeji je drasticky zjednodušený tím, že nemusíme detekovat libovolný text, ale můžeme se omezit na digitální číslice určité barvy.</p>
+
+<p>Z dostupné literatury jsme vybrali něktéré zajímavé práce na příbuzná témata.</p>
+
+<h4>3.3.1 Rozpoznávání dopravních značek omezujících rychlost</h4>
+
+<p>K tomuto tématu jsme studovali články [1] a [2]. Článek [1] se zaměřuje na rozpoznávání Norských dopravnich značek, systém popsaný ve [2] je vytvořený pro značky Dánské. Metody používané v článcích se značně překrývají s metodami, které v tomto reportu navrhujeme pro náš projekt.</p>
+
+<p>V článku [1] autoři postupují tak, že se nejprve s pomocí šablony identifikuje červené mezikruží jako charakteristický prvek značky. Následně se provádí OCR na číslicích v takto vyznačené oblasti.</p>
+
+<p>Systém vyvinutý v článku [2] je obecnější a umí rozpoznávat všechny značky, které mají vliv na omezení rychlosti, například začátek a konec dálničního úseku nebo začátek a konec zastavěného území. </p>
+
+<p>Článek [1] pracuje s prostorem barev RGB a použité techniky nejsou samy o sobě příliš zajímavé, ve zdroji [2] se autoři v každém kroku porovnávají vícero metod, a tak třeba prahování zkoušejí provádět v prostorech RGB i HSV, dle pevně naučených prahů i podle dynamicky přizpůsobených prahů dle histogramu.</p>
+
+<p>Pohled do praxe: Tuto funkcionalitu je možné v součastnosti najít u nejlépe vybavených výbavě vlajkových modelů osobních automobilů. Soudobá auta již umějí rozpoznávat vícero druhů značek, nejen rychlostní omezení.</p>
+
+<h4>3.3.2. Rozpoznávání registračních značek</h4>
+
+<p>Praktické využití: kontrola parkování, kontrola oprávnění k vjezdu do areálu, nebo úsekové měření rychlosti v obcích.</p>
+
+<h4>3.3.3. Rozpoznávání textu v realných scénách</h4>
+
+<p>Článek [4] je zajímavý hlavně obsáhlým úvodem s odkazy na literaturu, ve kterém se podává přehled a vyzdvihují úspěchy použití metod učení bez učitele pro konstrukci atributů. Články [5,6,7] každý popisují některou z ručně navržených metod pro detekci textu, ať už například podle rovnoměrné tlouštky čar, či jiné charakteristiky, kterou text obvykle vykazuje.</p>
+
+<p>Praktické využití: umožňuje následnou aplikaci OCR na běžné fotografie, je pak možné například strojově číst vývěsní štíty obchodů. Využívá se například v Google StreetView. Zajímavost ohledně Streetview je, že pro rozpoznávání nalezených domovních čísel se nevyužívá OCR, ale technika human computation, kdy se nalezené obrázky domovních čísel předkládají uživatelům jako test CAPTCHA.</p>
+
+<h4>3.3.4. Automatizovaný odečet elektroměru</h4>
+
+<p>Patent [8] se zabývá zpracováním statických fotografií elektroměrů pro zrychlení a zpřesnění manualního odečtu údajů, což téměř přesně kopíruje téma tohoto projektu.</p>
+
+<h3>3.3.5. Seznam literatury</h3>
+
+<p>[1] Efﬁcient Recognition of Speed Limit Signs<br/>
+<a href="http://heim.ifi.uio.no/jimtoer/ITSC04_Torresen.pdf">http://heim.ifi.uio.no/jimtoer/ITSC04_Torresen.pdf</a></p>
+
+<p>[2] Automated Speed Limit Sign recognition<br/>
+<a href="http://www.vip.aau.dk/wp-content/uploads/2011/12/sign11.pdf">http://www.vip.aau.dk/wp-content/uploads/2011/12/sign11.pdf</a></p>
+
+<p>[3] Advanced Intelligent Computing Theories and Applications<br/>
+Donald C. Wunsch, Daniel S. Levine, ISBN 3540859306</p>
+
+<p>[4] Text Detection And Character Recognition In Scene Images With Unsupervised Feature Learning<br/>
+<a href="http://www.learningace.com/doc/2857414/e28bbaaf886b617095f8907c8a542f5c/textdetectionandcharacterrecognitioninsceneimageswithunsupervisedfeaturelearning">http://www.learningace.com/doc/2857414/e28bbaaf886b617095f8907c8a542f5c/textdetectionandcharacterrecognitioninsceneimageswithunsupervisedfeaturelearning</a></p>
+
+<p>[5] Detecting Text in Natural Scenes with Stroke Width Transform<br/>
+<a href="http://yoni.wexlers.org/papers/2010TextDetection.pdf">http://yoni.wexlers.org/papers/2010TextDetection.pdf</a><br/>
+<a href="https://sites.google.com/site/roboticssaurav/strokewidthnokia">https://sites.google.com/site/roboticssaurav/strokewidthnokia</a></p>
+
+<p>[6] Real-Time Scene Text Localization and Recognition<br/>
+<a href="http://cmp.felk.cvut.cz/%7Eneumalu1/neumann-cvpr2012.pdf">http://cmp.felk.cvut.cz/~neumalu1/neumann-cvpr2012.pdf</a></p>
+
+<p>[7] ROBUST TEXT DETECTION IN NATURAL IMAGES WITH EDGE-ENHANCED MAXIMALLY STABLE EXTREMAL REGIONS <a href="http://www.stanford.edu/%7Edmchen/documents/ICIP2011_RobustTextDetection.pdf">http://www.stanford.edu/~dmchen/documents/ICIP2011_RobustTextDetection.pdf</a></p>
+
+<p>[8] Automated meter inspection and reading<br/>
+US patent číslo 5559894 vydaný dne 24 srpna 1996</p>
+
+<p>[9] Building High-level Features Using Large Scale Unsupervised Learning <a href="http://arxiv.org/abs/1112.6209">http://arxiv.org/abs/1112.6209</a></p>
+
+<p>[10] Sparse Feature Learning for Deep Belief Networks  Marc’Aurelio Ranzato1 Y-Lan Boureau2,1 Yann LeCun1<br/>
+<a href="http://books.nips.cc/papers/files/nips20/NIPS2007_1118.pdf">http://books.nips.cc/papers/files/nips20/NIPS2007_1118.pdf</a></p>
+
+<h2>4. Návrh řešení</h2>
+
+<p>Námi navrhovaný postup je možno rozdělit do tří fází. Je to jednak nalezení obdélníkových výřezů v obrazu, které obsahují číslice, na což navazuje konstrukce atributů pro klasifikační algoritmus, a ten provede finální klasifikaci každého výřezu, abychom určili, kterou číslici displej zobrazuje.</p>
+
+<h3>4.1. Nalezení obdélníkových výřezů</h3>
+
+<p>S pomocí programu ImageMagic, sady nástrojů pro úpravu obrázků, jsme na testovacím snímku navrhli sérii transformací, které z obrazu dovolují izolovat jednotlivé číslice. Dalším krokem bude naprogramování těchto transformací v programovacím jazyce Python. Proces je ilustrován na sérii čtyř obrázků.</p>
+
+<h4>4.1.1. Neupravený obrázek</h4>
+
+<p><img src="images/1.png" alt="Neupravený obrázek"/></p>
+
+<h5>4.1.2. Prahování v barevném prostoru HSV</h5>
+
+<p>V barevném prostoru HSV, který lépe reflektuje intuitivní lidské představy, nežli běžněji používaný prostor HSV, je možno poměrně dobře specifikovat zelenavý odstín číslic na displeji měřicího přístroje a odlišit tak popředí (na dalším obrázku bíle) od pozadí (černě).</p>
+
+<p><img src="images/2.png" alt="Obrázek po prahování"/></p>
+
+<h4>4.1.3. Filtrování</h4>
+
+<p>Ačkoli zrovna na tomto obrázku dopadl předchozí krok bezvadně, ukázalo se, že u některých jiných snímků se vyskytují malé zelené oblasti, které nepatří k číslům. Pro jejich odstranění jsme se rozhodli použít operaci z matematické morfologie nazvanou parametrické otevření.</p>
+
+<p><img src="images/3.png" alt="Obrázek po filtrování"/></p>
+
+<h4>4.1.4. Segmentace</h4>
+
+<p>Každá číslice je tvořena souvislou oblastí bílých pixelů. Každou spojenou komponentu [connected components] tedy prohlásíme za jednu číslici, což na následujicím obrázku znázorňuje zelený obdélník kolem každé takové oblasti.</p>
+
+<p><img src="images/4.png" alt="Obrázek po segmentaci"/></p>
+
+<h3>4.2. Tvorba atributů</h3>
+
+<p>Před tím, než přístoupíme k vytváření atributů, chceme nalezené obdélníkové oblasti, nejprve přeškálovat na jednotnou velikost 5x7 pixelů. Díky tomu budeme moci vytvářet vektory pevné délky. Jako atributy navrhujeme vyzkoušet<br/>
+bitový vektor vzniklý zřetězením všech pixelů přeškálované obdélníkové oblasti<br/>
+vektor přirozených čísel, kde každý z prvků koresponduje s jedním z pixelů na hraně přeškálované obdélníkové oblasti a jeho hodnota představuje počet souvislých pixelů pozadí v tom sloupci, respektive řádku.</p>
+
+<h3>4.3. Klasifikace</h3>
+
+<p>Pro klasifikaci chceme vyzkoušet alespoň tři algoritmy: Naive Bayes, Decision tree a Nearest Neighbour. Domníváme se, že by mohlo být výhodné, pokud by použitý algoritmus byl schopen ke klasifikaci dodat i míru jistoty, s jakou příklad patří do jednotlivých tříd. Tuto informaci by mohlo být užitečné zkombinovat s informacemi z předcházejicích snímků a s využitím faktu, že číslo na displeji se mění spojitě, tak omezit výskyt chyb a dále vylepšít přesnost rozpoznávání.</p>
+
+	</div><div id="columnB">
+		<h2> <b> Novinky: </b> </h2>
+		<p><strong>[20/05/2013]</strong> <br /> Spuštìny webové stránky </p>
+		<p><strong>[26/05/2013]</strong> <br /> Interim report </p>
+		<br />
+		<h2> <b> Související odkazy: </b> </h2>
+		<a href="http://www.cs.waikato.ac.nz/ml/weka/"> Weka </a> <br />
+		<a href="http://www.fi.muni.cz/usr/popelinsky/lectures/kdd/"> Stránky předmětu </a> <br />
+	</div>
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<div id="footer">
+	<p>Copyright &copy; 2013 Jiří Daněk. Designed by <a href="http://www.freecsstemplates.org" class="link1">Free CSS Templates</a></p>
+</div>
+</body>
+</html>
+
+
+    
+    
+</body>
+</html> 

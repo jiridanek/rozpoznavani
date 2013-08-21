@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Výsledky | Projekt ze strojového učení</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="styles/default.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+	<h1> Projekt </h1>
+	<h2> PV056 </h2>
+</div>
+<div id="menu">
+	<ul>
+		<li><a href="#">CS:</a></li>
+		<li><a href="./index_cs.html">Úvod</a></li>
+		<li><a href="./interim_cs.html">Interim report</a></li>
+		<li><a href="./predzpracovani_cs.html">Předzpracování</a></li>
+		<li><a href="./klasifikace_cs.html">Klasifikace</a></li>
+		<li><a href="./vysledky_cs.html">Výsledky</a></li>
+	</ul>
+	<br>
+	<br>
+	<hr style="clear:both; display:none">
+	<ul>
+		<li><a href="#">EN:</a></li>
+		<li><a href="./index_en.html">Introduction</a></li>
+		<li><a href="./interim_en.html">Interim report</a></li>
+		<li><a href="./predzpracovani_en.html">Preprocessing</a></li>
+		<li><a href="./klasifikace_en.html">Classification</a></li>
+		<li><a href="./vysledky_en.html">Results</a></li>
+	</ul>
+</div>
+<div id="content">
+	<div id="columnA"> 
+		<h1>Výsledky</h1>		
+		<p>Nejlepší dva klasifikační algoritmy dosáhly celkové správnosti 99.5 % na testovacích datech.</p>
+
+<h2>Vyhodnocení dat</h2>
+
+<p>Ke zpracování jsme se rozhodli použít algoritmus Naive Bayes, neboť ten je schopen kromě třídy navíc poskytnou i pravděpodobnost, s jakou instance do určené třídy náleží. Analýzou histogramu pravděpodobností jsme manualně určili práh 95 %. Instance klasifikované pod tímto prahem jsme prohlásili za nespohlehlivé a snímky, ve kterých se vyskytla jedna nebo více nespolehlivých instancí nezahrnuli do výsledné datové řady. V případě, že dva nebo více po sobě jdoucích snímků obsahovaly to stejné číslo, do datové řady jsme zahrnuli pouze první z nich. Datovou řadu jsme exportovali do formátu CSV a vytvořili graf v programu Microsoft Excel 2007.</p>
+
+<h2>Závěr</h2>
+
+<p>Vytvořili jsme sadu skriptů v programovacím jazyce Python s použitím knihovny PIL [3], které je možné použít k analýze videosekvencí podobného charakteru, jako jsou klipy displeje měřícího přístroje, které jsme používali pro testování my.<br/>
+Při použití na jiných datech bude pravděpodobně nutné provést úpravy v procesu předzpracování obrazu, zejména znovu nalézt vhodný práh. Všechny další kroky mohou zůstat nezměněny.</p>
+
+<p>Pokud vyneseme hodnoty získané analýzou našeho videa do grafu, dostaneme názorný obrázek, který dobře odpovídá v literatuře popsanému měření [1].</p>
+
+<h3>Výřez z námi vytvořeného grafu</h3>
+
+<p><img src="images/protokol.png" alt="Obrázek po segmentaci"/></p>
+
+<h3>Graf z literatury</h3>
+
+<p><img src="images/skripta.png" alt="Obrázek po segmentaci"/></p>
+
+<h2>Poděkování</h2>
+
+<p>Chtěli bychom poděkovat doktorskému studentu FI Pavlu Karasovi za radu ohledně metod zpracovnání obrazu, které nám poskytl na začátku řešení projektu.</p>
+
+<h2>Použitá literatura</h2>
+
+<ul>
+<li><p>[1] BROŽ, Pavel, Miroslav HOLÍK, Pavel JANDERKA, Jiří SOPOUŠEK, Jaromír TOUŠEK a Libuše TRNKOVÁ. Laboratorní cvičení z fyzikální chemie. Brno: Masarykova univerzita, 2003. 80 s. Fyzikální chemie 1. ISBN 80-210-3203-0.</p></li>
+<li><p>[2] SOILLE, Pierre. Morphological image analysis: principles and applications. 2nd ed., corr. 2nd print. Berlin: Springer, c2004, xvi, 391 s. ISBN 3540429883.</p></li>
+<li><p>[3] Python Imaging Library Handbook. Dostupné online: <a href="http://effbot.org/imagingbook/pil-index.htm">http://effbot.org/imagingbook/pil-index.htm</a></p></li>
+</ul>
+
+	</div><div id="columnB">
+		<h2> <b> Novinky: </b> </h2>
+		<p><strong>[20/05/2013]</strong> <br /> Spuštìny webové stránky </p>
+		<p><strong>[26/05/2013]</strong> <br /> Interim report </p>
+		<br />
+		<h2> <b> Související odkazy: </b> </h2>
+		<a href="http://www.cs.waikato.ac.nz/ml/weka/"> Weka </a> <br />
+		<a href="http://www.fi.muni.cz/usr/popelinsky/lectures/kdd/"> Stránky předmětu </a> <br />
+	</div>
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<div id="footer">
+	<p>Copyright &copy; 2013 Jiří Daněk. Designed by <a href="http://www.freecsstemplates.org" class="link1">Free CSS Templates</a></p>
+</div>
+</body>
+</html>
+
+
+    
+    
+</body>
+</html> 
