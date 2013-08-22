@@ -40,22 +40,23 @@
 
 <h2>Evaluation of the data</h2>
 
-<p>To process the data we decited to use the Naive Bayes algorithm for two reasons. First, it is one of the two that gave the best accuracy. Second, it provides not only the classification but also the estimate of probability of the classification being correct. By looking at the histogram of the probabilities we decided to use a treshold of 95 % and drop any frame in which any of the numerals is classified bellow this treshold. In case two or more frames in a row contained the same numeral, we used only the first one and dropped all the subsequent repetitions. The data were exported in the CSV format and plotted using the Microsoft Excel 2007 spreadsheet software.</p>
+<p>To process the data we decided to use the Naive Bayes algorithm for two reasons. First, it is one of the two that gave the best accuracy. Second, it provides not only the classification but also the estimate of probability of the classification being correct. By looking at the histogram of the probabilities we decided to use a threshold of 95 % and drop any frame in which any of the numerals is classified bellow this threshold. In case two or more frames in a row contained the same numeral, we used only the first one and dropped all the subsequent repetitions. The data were exported in the CSV (Comma-separated Values) format and plotted using the Microsoft Excel 2007 spreadsheet software.</p>
 
 <h2>Conclusion</h2>
 
-<p>We have created a set of scripts in the Python programing language using the PIL library [3], that can be used to analyze recordings similar to the one of a digital display that we used.<br/>
-If used with different videos, the image processing process may have to be changed, most importantly the treshold values. The classification steps may stay unchanged.</p>
+<p>We have created a set of scripts in the Python programing language using the PIL library [3], that can be used to analyze recordings similar to the one of a digital display that we used.</p>
+
+<p>If used with different videos, the image processing process may have to be changed, most importantly the threshold values. The classification steps may stay unchanged.</p>
 
 <p>When the values obtained by classifying the whole video are plotted, the resulting chart looks like other measurements described in literature [1].</p>
 
 <h3>Our chart</h3>
 
-<p><img src="images/protokol.png" alt="Obrázek po segmentaci"/></p>
+<p><img src="images/protokol.png" alt="Our chart"/></p>
 
 <h3>Chart obtained from literature</h3>
 
-<p><img src="images/skripta.png" alt="Obrázek po segmentaci"/></p>
+<p><img src="images/skripta.png" alt="Chart from literature"/></p>
 
 <h2>Thanks</h2>
 

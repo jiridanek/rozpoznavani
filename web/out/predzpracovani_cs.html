@@ -38,7 +38,7 @@
 		<h1>Předzpracování obrazu</h1>		
 		<h2>1. Prahování</h2>
 
-<p>Využíváme faktu, že pixely příslušející číslicím na displeji voltmetru jsou dobře odlišitelné od pozadí na základě své barvy. Zvolili jsme následující práh v prostoru barev HSV (Hue Saturation Value)</p>
+<p>Využíváme faktu, že pixely příslušející číslicím na displeji voltmetru jsou dobře odlišitelné od pozadí na základě své barvy. Zvolili jsme následující práh v prostoru barev HSV (Hue, Saturation, Value)</p>
 
 <pre><code>H ∈ (150, 185)
 S ∈ (0, 50)
@@ -47,7 +47,7 @@ V ∈ (0, 65)
 
 <p>Pixely, jejichž barva leží v tomto prahu jsme prohlásili za popředí, ostatní za pozadí. Obdrželi jsme binární obraz, kde vybarvené pixely odpovídaly číslicím displeje a nevybarvené pixely tvoří pozadí.</p>
 
-<p>Prostor barev HSV je vhodný proto, že struktura tohoto barevného prostoru reflektuje lidské představy o barvě lépe než prostor RGB, navíc konverze mezi těmito barevnými prostory je velice jenoduchá. Vhodnost zvoleného prahu jsme vyhodnotili pomocí vizualní inspekce. Ukázalo se, že tento práh dobře odfiltruje sledovaná čísla od pozadí.</p>
+<p>Prostor barev HSV je vhodný proto, že struktura tohoto barevného prostoru reflektuje lidské představy o barvě lépe než prostor RGB, navíc konverze mezi těmito barevnými prostory je velice jednoduchá. Vhodnost zvoleného prahu jsme vyhodnotili pomocí vizuální inspekce. Ukázalo se, že tento práh dobře odfiltruje sledovaná čísla od pozadí.</p>
 
 <h2>2. Segmentace</h2>
 
@@ -60,8 +60,8 @@ V ∈ (0, 65)
 <p>Použili jsme primárně dva atributy popsané v Interim reportu:</p>
 
 <ul>
-<li>  levý, pravý, horní a spodní profil segmentu (tento atribut se podle literatury [2] dá dobře využít právě k rozpoznávání číslic)</li>
-<li>  hodnoty všech pixelů segmentu.</li>
+<li>levý, pravý, horní a spodní profil segmentu (tento atribut se podle literatury [2] dá dobře využít právě k rozpoznávání číslic)</li>
+<li>hodnoty všech pixelů segmentu.</li>
 </ul>
 
 <p>Aby byly tyto atributy vzájemně porovnatelné, přeškálovali jsme před jejich výpočtem každý segment na rozměry 20x40 pixelů.</p>
@@ -69,8 +69,8 @@ V ∈ (0, 65)
 <p>Kromě výše popsaných jsme navíc přidali další dva atributy:</p>
 
 <ul>
-<li>  atribut poměr šířky a výšky segmentu, který umožňuje klasifikačnímu algoritmu lépe odlišit číslici 1 od číslice 8</li>
-<li>  atribut procentualní podíl černých pixelů v obdélníkovém segmentu má pomoci lépe odlišit číslice 0 a 8.</li>
+<li>atribut poměr šířky a výšky segmentu, který umožňuje klasifikačnímu algoritmu lépe odlišit číslici 1 od číslice 8</li>
+<li>atribut procentuální podíl černých pixelů v obdélníkovém segmentu má pomoci lépe odlišit číslice 0 a 8.</li>
 </ul>
 
 	</div><div id="columnB">

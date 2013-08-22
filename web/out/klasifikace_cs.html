@@ -42,17 +42,19 @@
 
 <h2>Klasifikace</h2>
 
-<p>Pro naučení klasifikačního algoritmu jsme náhodně vybrali 500 snímků videa, aplikací připravených skriptů pro zpracování obrazů jsme z nich obdrželi 2000 segmentů, každý obsahoval jednu číslici, tyto číslice jsme manualně klasifikovali do tříd a připravili soubor ARFF s učícími daty. Poměrné zastoupení instancí jednotlivých tříd v učících datech bylo vzhledem ke způsobu jejich přípravy velmi nerovnoměrné, padesát procent učících instancí tvořily číslice 1, podíl ostatních tříd pak již byl relativně vyvážený.</p>
+<p>Pro naučení klasifikačního algoritmu jsme náhodně vybrali 500 snímků videa, aplikací připravených skriptů pro zpracování obrazů jsme z nich obdrželi 2000 segmentů, každý obsahoval jednu číslici, tyto číslice jsme manuálně klasifikovali do tříd a připravili soubor ARFF s učícími daty. Poměrné zastoupení instancí jednotlivých tříd v učících datech bylo vzhledem ke způsobu jejich přípravy velmi nerovnoměrné, padesát procent učících instancí tvořily číslice 1, podíl ostatních tříd pak již byl relativně vyvážený.</p>
+
+<p><img src="images/instance.png" alt="Podíly instancí jednotlivých tříd v učících datech"/></p>
 
 <p>Pro ověření výsledků učení jsme použili metodu Cross validation s 10 foldy.</p>
 
-<p>Při použití pouze atributů popsaných v Interim reportu (okraje a hodnoty pixelů) jsme se setkali s tím, že klasifikační algoritmy velmi často zaměňovaly číslici 1 za číslici 8, občas také za číslici 0. Přidáním atributu poměru mezi šířkou a výškou segmentu se tento problém odstranil. Vliv tohoto atributu je dobře vidět v klasifikačním stromu vygenerovaném algoritmem J48, blízko vrcholu stromu se vyskytuje rozvětvění:</p>
+<p>Při použití pouze atributů popsaných v Interim reportu (okraje a hodnoty pixelů) jsme se setkali s tím, že klasifikační algoritmy velmi často zaměňovaly číslici 1 za číslici 8, občas také za číslici 0. Přidáním atributu poměru mezi šířkou a výškou segmentu se tento problém odstranil. Vliv tohoto atributu je dobře vidět v klasifikačním stromu vygenerovaném algoritmem J48, blízko vrcholu stromu se vyskytuje rozvětvení:</p>
 
 <pre><code>woverh &lt;= 0.333333: 1 (1000.0)
 |   woverh &gt; 0.333333
 </code></pre>
 
-<p>Dalšího několikaprocentního zlepšení celkové správnosti jsme dosáhli přidáním atributu procentualní podíl černých pixelů.</p>
+<p>Dalšího několikaprocentního zlepšení celkové správnosti jsme dosáhli přidáním atributu procentuální podíl černých pixelů.</p>
 
 <h2>Celková správnost</h2>
 
@@ -64,10 +66,11 @@ J48         1.11 s                99,3 %
 
 <p>Výpisy z logů programu Weka jsou přiloženy v závěru této stránky.</p>
 
-<p>##Naive Bayes<br/>
-    Time taken to build model: 0.38 seconds</p>
+<h2>Naive Bayes</h2>
 
-<pre><code>=== Stratified cross-validation ===
+<pre><code>Time taken to build model: 0.38 seconds
+
+=== Stratified cross-validation ===
 === Summary ===
 
 Correctly Classified Instances        1990               99.5    %
